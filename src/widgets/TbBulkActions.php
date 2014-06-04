@@ -219,6 +219,7 @@ class TbBulkActions extends CComponent
     public function registerClientScript()
     {
 
+<<<<<<< HEAD
        
         $js = <<<EOD
 $(document).on("click", "#{$this->grid->id} input[type=checkbox], #{$this->grid->id} tr", function(){
@@ -264,6 +265,21 @@ $(document).on('click', '#{$this->grid->id} input[type=checkbox]', function(e){
             $js .= "\n$(document).on('click','#{$buttonId}', function(){
             var checked = $('input[name=\"{$this->columnName}\"]:checked');\n
 
+=======
+        $js = '';
+        if(!$this->selectableRows)
+        {
+        $js .= "$.fn.yiiGridView.initBulkActions('{$this->grid->id}');";
+}
+        foreach ($this->events as $buttonId => $handler) {
+            $js .= "\n$(document).on('click','#{$buttonId}', function(){
+            var checked = $.fn.yiiGridView.getCheckedItems();
+            if (!checked.length)
+            {
+                alert('".$this->noCheckedMessage."');
+                return false;
+            }
+>>>>>>> master
 			var fn = $handler; if ($.isFunction(fn)){fn(checked);}\nreturn false;});\n";
         }
         Yii::app()->getClientScript()->registerScript(__CLASS__ . '#' . $this->getId(), $js);
