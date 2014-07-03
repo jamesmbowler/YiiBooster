@@ -433,24 +433,11 @@ class MyBooster extends Booster {
 	 * and install and register it.
 	 * @return array
 	 */
-	protected function createBootstrapCssPackage() {
-		
-		if($this->minify || $this->enableCdn)
-		{
-			if(Yii::app()->request->cookies['theme'])
-			{
-				$file = Yii::app()->request->cookies['theme']->value;
-			} else {
-				$file = 'bootstrap.min.css';
-			}
-			
-		} else {
-			$file = 'bootstrap.css';
-		}
+    protected function createBootstrapCssPackage() {
 
 		return array('bootstrap.css' => array(
 			'baseUrl' => $this->enableCdn ? '//netdna.bootstrapcdn.com/bootstrap/3.1.1/' : $this->getAssetsUrl() . '/bootstrap/',
-			'css' => array( 'css/'.$file ),
+			'css' => array( ($this->minify || $this->enableCdn) ? 'css/readable.bootstrap.min.css' : 'css/bootstrap.css' ),
 		));
 	}
 
