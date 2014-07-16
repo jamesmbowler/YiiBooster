@@ -25,7 +25,8 @@ return array(
 	),
 	'jquery-css' => array(
 		'baseUrl' => $this->getAssetsUrl(),
-		'css' => array('css/jquery-ui-bootstrap.css'),
+		'css' => array('css/my-jquery-ui-bootstrap.css'),
+		
 	),
 	'bootbox' => array(
 		'baseUrl' => $this->getAssetsUrl() . '/bootbox/',

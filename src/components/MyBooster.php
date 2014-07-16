@@ -322,7 +322,7 @@ class MyBooster extends Booster {
 	public function registerJQueryCss() {
 		
 		$this->registerPackage('jquery-css')->scriptMap['jquery-ui.css'] = $this->getAssetsUrl(
-		) . '/css/jquery-ui-bootstrap.css';
+		) . '/css/my-jquery-ui-bootstrap.css';
 	}
 
 	/**

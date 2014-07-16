@@ -22,6 +22,7 @@ class TbGoogleVisualizationChart extends CWidget
 	 */
 	public $containerId;
 
+	public $package = 'corechart';
 	/**
 	 * @var string $visualization the type of visualization -ie PieChart
 	 * @see https://google-developers.appspot.com/chart/interactive/docs/gallery
@@ -86,7 +87,7 @@ class TbGoogleVisualizationChart extends CWidget
 		$cs->registerScriptFile('https://www.google.com/jsapi');
 		$cs->registerScript(
 			__CLASS__ . '#' . $id,
-			'google.load("visualization", "1", {packages:["corechart"]});',
+			'google.load("visualization", "1", {packages:["'.$this->package.'"]});',
 			CClientScript::POS_HEAD
 		);
 		$cs->registerScript($id, $script, CClientScript::POS_HEAD);
